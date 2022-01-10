@@ -7,4 +7,4 @@ EXPOSE 5000
 COPY website website
 # CMD ["python", "-m", "http.server", "5000"]
 WORKDIR /code/website
-CMD ["python", "manage.py", "runserver", "5000"]
+CMD ["python", "manage.py", "runserver", "web:5000"]
