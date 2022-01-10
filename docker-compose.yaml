@@ -5,8 +5,12 @@ services:
     build: .
     ports:
       - "5000:5000"
+    volumes:
+      - ./website/:/code/website/
+
   redis:
     image: "redis:6.0.16"
+
   db:
     image: "postgres:14.1"
     ports:
