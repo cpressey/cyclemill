@@ -4,7 +4,7 @@ WORKDIR /code
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 EXPOSE 5000
-COPY website website
+COPY . .
 # CMD ["python", "-m", "http.server", "5000"]
 WORKDIR /code/website
 CMD ["python", "manage.py", "runserver", "web:5000"]
