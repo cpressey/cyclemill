@@ -7,9 +7,18 @@ services:
       - "8000:8000"
     volumes:
       - ./website/:/code/website/
+    environment:
+      DJANGO_ROLE: web
 
-  redis:
-    image: "redis:6.0.16"
+  worker:
+    build: ./website/
+    volumes:
+      - ./website/:/code/website/
+    environment:
+      DJANGO_ROLE: worker
+
+  # redis:
+  #   image: "redis:6.0.16"
 
   db:
     image: "postgres:14.1"

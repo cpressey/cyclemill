@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 COPY . .
 WORKDIR /code/website
-CMD ["python", "manage.py", "runserver", "web:8000"]
+CMD ["bash", "startup.sh"]
