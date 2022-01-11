@@ -2,3 +2,4 @@ Django==3.2.11
 redis==4.1.0
 psycopg2-binary==2.9.3
 celery==5.2.3
+django-celery-results==2.2.0

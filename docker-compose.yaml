@@ -9,6 +9,9 @@ services:
       - ./website/:/code/website/
     environment:
       DJANGO_ROLE: web
+    depends_on:
+      - db
+      - worker
 
   worker:
     build: ./website/
@@ -16,6 +19,9 @@ services:
       - ./website/:/code/website/
     environment:
       DJANGO_ROLE: worker
+    depends_on:
+      - db
+      - queue
 
   # redis:
   #   image: "redis:6.0.16"
