@@ -23,9 +23,6 @@ services:
       - db
       - queue
 
-  # redis:
-  #   image: "redis:6.0.16"
-
   db:
     image: "postgres:14.1"
     ports:
@@ -34,6 +31,8 @@ services:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
       POSTGRES_DB: default_db
+    volumes:
+      - dbdata:/var/lib/postgresql/data
 
   queue:
     image: "rabbitmq:3.9.12"
@@ -42,3 +41,6 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: username
       RABBITMQ_DEFAULT_PASS: password
+
+volumes:
+  dbdata:
