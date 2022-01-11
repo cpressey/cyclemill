@@ -4,7 +4,7 @@ services:
   web:
     build: ./website/
     ports:
-      - "5000:5000"
+      - "8000:8000"
     volumes:
       - ./website/:/code/website/
 
@@ -19,3 +19,11 @@ services:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
       POSTGRES_DB: default_db
+
+  queue:
+    image: "rabbitmq:3.9.12"
+    ports:
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: username
+      RABBITMQ_DEFAULT_PASS: password

@@ -3,8 +3,7 @@ RUN apt-get update && apt-get upgrade -y
 WORKDIR /code
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-EXPOSE 5000
+EXPOSE 8000
 COPY . .
-# CMD ["python", "-m", "http.server", "5000"]
 WORKDIR /code/website
-CMD ["python", "manage.py", "runserver", "web:5000"]
+CMD ["python", "manage.py", "runserver", "web:8000"]
