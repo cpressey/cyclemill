@@ -4,6 +4,10 @@
     </head>
     <body>
         <h1>Worked!</h1>
+        <form action="/launch/" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Launch" />
+        </form>
     </body>
 </html>
 

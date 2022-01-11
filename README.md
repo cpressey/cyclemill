@@ -26,13 +26,24 @@ Back outside, another handy command is
 TODO
 ----
 
-*   model of something -- workflow
-*   web wait for db to be ready
-*   run celery worker as non-root to suppress its whining
+*   model: workflow (task id, status)
 *   PATTERN: have "every" task update its "workflow status" record when it starts
 *   PATTERN: have "every" final task update its "workflow status" record when it finishes
 *   PATTERN: run a "canvas"
+*   logging
+
+### addons
+
+*   django-simple-history
+*   django-vanilla-views
+*   django-polymorphic
+
+### Research
+
 *   read about canvases
 *   read about prometheus
-*   logging
-*   form with POST
+
+### Nice to have
+
+*   web wait for db to be ready
+*   run celery worker as non-root to suppress its whining
