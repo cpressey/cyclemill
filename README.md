@@ -26,5 +26,13 @@ Back outside, another handy command is
 TODO
 ----
 
-sample task, launch task
-django-rest-framework
+*   model of something -- workflow
+*   django-rest-framework
+*   django-debug-toolbar
+*   web wait for db to be ready
+*   run celery worker as non-root to suppress its whining
+*   PATTERN: have "every" task update its "workflow status" record when it starts
+*   PATTERN: have "every" final task update its "workflow status" record when it finishes
+*   PATTERN: run a "canvas"
+*   read about canvases
+*   read about prometheus
