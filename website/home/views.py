@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
+from django.shortcuts import render
 
 from home.tasks import sample_task
 
 
 def home(request):
-    return HttpResponse("<h1>It works!</h1>", content_type="text/html")
-
+    return render(request, 'home.html', {})
 
 
 # @require_POST
