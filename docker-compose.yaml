@@ -2,21 +2,22 @@ version: "3.3"
 
 services:
   web:
-    build: ./website/
+    build: ./webapp/
     ports:
       - "8000:8000"
     volumes:
-      - ./website/:/code/website/
+      - ./webapp/:/code/webapp/
     environment:
       DJANGO_ROLE: web
     depends_on:
-      - db
       - worker
+      - db
+      - queue
 
   worker:
-    build: ./website/
+    build: ./webapp/
     volumes:
-      - ./website/:/code/website/
+      - ./webapp/:/code/webapp/
     environment:
       DJANGO_ROLE: worker
     depends_on:

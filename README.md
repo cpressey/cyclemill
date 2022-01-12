@@ -30,7 +30,6 @@ TODO
 *   prometheus instance
 *   logging
 *   research django-celery-results.  how to use its tables?
-*   `website` -> `webapp`
 
 ### Nice to have
 

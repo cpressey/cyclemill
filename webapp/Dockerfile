@@ -5,5 +5,5 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 EXPOSE 8000
 COPY . .
-WORKDIR /code/website
+WORKDIR /code/webapp
 CMD ["bash", "startup.sh"]
