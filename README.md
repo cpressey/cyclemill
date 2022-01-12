@@ -28,6 +28,6 @@ TODO
 *   PATTERN: run a "canvas"
 *   form to take length task should run
 *   prometheus instance
+*   research prometheus on celery
 *   logging
-*   research django-celery-results.  how to use its tables?
 *   web wait for db to be ready

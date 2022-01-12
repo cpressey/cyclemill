@@ -1,13 +1,25 @@
 <html>
-    <head>
-        <title>Welcome</title>
-    </head>
-    <body>
-        <h1>Worked!</h1>
-        <form action="/launch/" method="POST">
-            {% csrf_token %}
-            <input type="submit" value="Launch" />
-        </form>
-    </body>
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h1>Tasks</h1>
+    <form action="/launch/" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Launch" />
+    </form>
+
+    <h2>Task Results</h2>
+    <ul>
+      {% for task_result in task_results %}
+        <li>
+          {{ task_result.task_id }}
+          {{ task_result.task_name }}
+          {{ task_result.status }}
+          {{ task_result.date_done }}
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>
 
