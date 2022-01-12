@@ -6,20 +6,16 @@ To build the image and bring up the stack:
     docker-compose build
     docker-compose up
 
-To "telnet" into the container as root (to e.g. install things):
+You probably want to create a superuser to use the admin:
 
-    docker-compose exec web bash
+    ./script/manage.py.sh createsuperuser
 
-To "telnet" into the container as regular user (to e.g. run `manage.py`):
+That script runs the `manage.py` inside the container,
+which can be super useful for troubleshooting, especially
 
-    docker-compose exec --user $(id -u):$(id -g) web bash
+    ./script/manage.py.sh shell
 
-Once in, some handy commands are
-
-    ./manage.py createsuperuser
-    ./manage.py shell
-
-Back outside, another handy command is
+Back on the host, another handy command is
 
     docker-compose restart web
 
@@ -30,18 +26,11 @@ TODO
 *   PATTERN: have "every" task update its "workflow status" record when it starts
 *   PATTERN: have "every" final task update its "workflow status" record when it finishes
 *   PATTERN: run a "canvas"
+*   form to take length task should run
+*   prometheus instance
 *   logging
-
-### addons
-
-*   django-simple-history
-*   django-vanilla-views
-*   django-polymorphic
-
-### Research
-
-*   read about canvases
-*   read about prometheus
+*   research django-celery-results.  how to use its tables?
+*   `website` -> `webapp`
 
 ### Nice to have
 
