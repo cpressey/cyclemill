@@ -30,8 +30,4 @@ TODO
 *   prometheus instance
 *   logging
 *   research django-celery-results.  how to use its tables?
-
-### Nice to have
-
 *   web wait for db to be ready
-*   run celery worker as non-root to suppress its whining
