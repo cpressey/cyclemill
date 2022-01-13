@@ -4,8 +4,14 @@ from django.db import models
 
 
 class Workflow(models.Model):
+    STATUSES = (
+        ('RUNNING', 'Running'),
+        ('COMPLETED', 'Completed'),
+        ('FAILED', 'Failed'),
+    )
     type = models.CharField(max_length=60)
     started_at = models.DateTimeField()
+    status = models.CharField(max_length=60, choices=STATUSES, default='RUNNING')
 
 
 class WorkflowTask(models.Model):

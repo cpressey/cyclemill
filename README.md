@@ -22,9 +22,9 @@ Back on the host, another handy command is
 TODO
 ----
 
-*   PATTERN: have "every" task update its "workflow status" record when it starts
-*   PATTERN: have "every" final task update its "workflow status" record when it finishes
-*   PATTERN: run a "canvas"
+*   make the workflow task pattern a pattern (decorator?)
+*   run a celery "canvas"
+*   make the page refresh
 *   form to take length task should run
 *   prometheus instance
 *   have prometheus monitor celery
