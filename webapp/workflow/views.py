@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from django_celery_results.models import TaskResult
 
-from home.tasks import sample_task
+from workflow.tasks import sample_task
 
 
 def home(request):
