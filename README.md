@@ -17,16 +17,18 @@ which can be super useful for troubleshooting, especially
 
 Back on the host, another handy command is
 
-    docker-compose restart web
+    docker-compose restart worker
+
+(because it doesn't restart by itself when you change the code).
 
 TODO
 ----
 
 *   make the workflow task pattern a pattern (decorator?)
+*   django messages after launch button
+*   config django logging so messages show up in docker console
 *   run a celery "canvas"
-*   make the page refresh
 *   form to take length task should run
 *   prometheus instance
 *   have prometheus monitor celery
-*   logging
 *   web wait for db to be ready

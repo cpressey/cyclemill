@@ -5,7 +5,7 @@ from django.shortcuts import render
 #from django_celery_results.models import TaskResult
 
 from workflow.models import Workflow, WorkflowTask
-from workflow.tasks import start_basic_workflow
+from workflow.workflows import start_basic_workflow
 
 
 def home(request):
