@@ -1,14 +1,26 @@
 <html>
   <head>
-    <title>Welcome</title>
+    <title>Workflows</title>
   </head>
   <body>
-    <h1>Tasks</h1>
+    <h1>Workflows</h1>
     <form action="/launch/" method="POST">
       {% csrf_token %}
       <input type="submit" value="Launch" />
     </form>
 
+    <h2>Workflows</h2>
+    <ul>
+      {% for workflow in workflows %}
+        <li>
+          {{ workflow.id }}
+          {{ workflow.type }}
+          {{ workflow.started_at }}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <!--
     <h2>Task Results</h2>
     <ul>
       {% for task_result in task_results %}
@@ -20,6 +32,7 @@
         </li>
       {% endfor %}
     </ul>
+    -->
   </body>
 </html>
 
