@@ -13,3 +13,4 @@ def start_basic_workflow(arg):
     workflow = Workflow.objects.create(type='Basic', started_at=now)
     logger.info('[Workflow {}] is now {}'.format(workflow.id, workflow.status))
     sample_task.delay(workflow.id, arg)
+    return workflow

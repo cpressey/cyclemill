@@ -24,11 +24,14 @@ Back on the host, another handy command is
 TODO
 ----
 
+*   base template
 *   make the workflow task pattern a pattern (decorator?)
-*   django messages after launch button
-*   config django logging so messages show up in docker console
 *   run a celery "canvas"
 *   form to take length task should run
 *   prometheus instance
 *   have prometheus monitor celery
 *   web wait for db to be ready
+*   some unit tests, too, why not
+*   API endpoints for workflows
+*   react app to use API, display the workflow status
+

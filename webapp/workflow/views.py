@@ -1,8 +1,7 @@
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views.decorators.http import require_POST
 from django.shortcuts import render
-
-#from django_celery_results.models import TaskResult
+from django.views.decorators.http import require_POST
 
 from workflow.models import Workflow, WorkflowTask
 from workflow.workflows import start_basic_workflow
@@ -16,6 +15,6 @@ def home(request):
 
 @require_POST
 def launch(request):
-    start_basic_workflow(30)
-    # django.messages
+    workflow = start_basic_workflow(30)
+    messages.info(request, '[Workflow {}] is now {}.'.format(workflow.id, workflow.status))
     return HttpResponseRedirect('/')

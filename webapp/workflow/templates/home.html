@@ -4,6 +4,15 @@
     <meta http-equiv="refresh" content="5; URL=.">
   </head>
   <body>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <h1>Workflows</h1>
     <form action="/launch/" method="POST">
       {% csrf_token %}
