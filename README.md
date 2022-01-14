@@ -28,9 +28,9 @@ TODO
 *   make the workflow task pattern a pattern (decorator?)
 *   run a celery "canvas"
 *   form to take length task should run
-*   prometheus instance
-*   have prometheus monitor celery
+*   config prometheus to consume celery-exporter
 *   web wait for db to be ready
+*   worker wait for rabbit to be ready
 *   some unit tests, too, why not
 *   API endpoints for workflows
 *   react app to use API, display the workflow status
