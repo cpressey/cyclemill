@@ -10,7 +10,6 @@ services:
     environment:
       DJANGO_ROLE: web
     depends_on:
-      - worker
       - db
       - queue
 

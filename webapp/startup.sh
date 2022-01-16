@@ -1,5 +1,7 @@
 #!/bin/sh
 
+wait-for-it db:5432
+wait-for-it queue:5672
 if [ "x$DJANGO_ROLE" = "xworker" ]; then
   su celery --command="celery -A webapp worker -l INFO"
 else

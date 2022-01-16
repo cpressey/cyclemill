@@ -32,8 +32,6 @@ TODO
 *   form to take length task should run
 *   config prometheus to consume celery-exporter
 *   monitor adapts exporter, config log level INFO not debug
-*   web wait for db to be ready
-*   worker wait for rabbit to be ready
 *   some unit tests, too, why not
 *   API endpoints for workflows
 *   react app to use API, display the workflow status
