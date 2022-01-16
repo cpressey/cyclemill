@@ -27,6 +27,8 @@ TODO
 *   base template
 *   make the workflow task pattern a pattern (decorator?)
 *   run a celery "canvas"
+*   Chain of tasks, use for workflow decoy
+*   Error handling, test thoroughly 
 *   form to take length task should run
 *   config prometheus to consume celery-exporter
 *   web wait for db to be ready
