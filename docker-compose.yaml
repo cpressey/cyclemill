@@ -42,13 +42,6 @@ services:
       RABBITMQ_DEFAULT_USER: username
       RABBITMQ_DEFAULT_PASS: password
 
-  monitor:
-    image: "bitnami/prometheus:2.32.1"
-    ports:
-      - 9090:9090
-    depends_on:
-      - exporter
-
   exporter:
     image: "danihodovic/celery-exporter:latest"
     ports:
@@ -56,6 +49,14 @@ services:
     command: --broker-url='amqp://username:password@queue:5672//'
     depends_on:
       - queue
+
+  monitor:
+    build: ./monitor/
+    ports:
+      - 9090:9090
+    command: --config.file=prometheus.yml
+    depends_on:
+      - exporter
 
 volumes:
   dbdata:
