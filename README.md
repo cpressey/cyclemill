@@ -4,9 +4,9 @@ cyclemill
 Celery is a good task queue for Django (much better than rolling
 your own, am I right) but by default there's no visibilty into it.
 
-There's a tool called [flower](https://flower.readthedocs.io/en/latest/index.html)
+There's a tool called [flower](https://flower.readthedocs.io/)
 that monitors celery tasks, but last I looked at it, it doesn't
-draw graphs anymore; instead, it recommended Prometheus for this purpose.
+draw graphs anymore; instead, it recommended [Prometheus](https://prometheus.io/) for this purpose.
 (This may have changed since then.)
 
 This docker-compose stack is a rough demo of setting up a simple Celery
@@ -17,7 +17,7 @@ queue on a Django webapp, with some efforts to increase visibility:
     based on [danihodovic/celery-exporter](https://github.com/danihodovic/celery-exporter/).
 *   a Django model (Workflow) that can be displayed to
     show the progress of tasks in Django's views.
-*   `django-celery-results` so the results of the tasks are also
+*   [django-celery-results](https://django-celery-results.readthedocs.io/) so the results of the tasks are also
     visible in Django's admin interface.
 
 Usage
