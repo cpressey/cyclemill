@@ -42,8 +42,9 @@ services:
       RABBITMQ_DEFAULT_USER: username
       RABBITMQ_DEFAULT_PASS: password
 
-  exporter:
-    image: "danihodovic/celery-exporter:latest"
+  celery-exporter:
+    # image: "danihodovic/celery-exporter:latest"
+    build: ./celery-exporter/
     ports:
       - 9808:9808
     command: --broker-url='amqp://username:password@queue:5672//'
@@ -56,7 +57,7 @@ services:
       - 9090:9090
     command: --config.file=prometheus.yml
     depends_on:
-      - exporter
+      - celery-exporter
 
 volumes:
   dbdata:

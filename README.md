@@ -30,7 +30,7 @@ TODO
 *   Chain of tasks, use for workflow decoy
 *   Error handling, test thoroughly 
 *   form to take length task should run
-*   monitor adapts exporter, config log level INFO not debug
+*   config exporter log level INFO not debug
 *   some unit tests, too, why not
 
 ### Big
