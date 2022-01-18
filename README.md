@@ -2,11 +2,12 @@ cyclemill
 =========
 
 Celery is a good task queue for Django (much better than rolling
-you own, am I right) but by default there's no visibilty into it.
+your own, am I right) but by default there's no visibilty into it.
 
-There's a tool called flower that monitors celery tasks, and it
-used to draw graphs, but it doesn't anymore.  It recommends
-Prometheus for this purpose.
+There's a tool called [flower](https://flower.readthedocs.io/en/latest/index.html)
+that monitors celery tasks, but last I looked at it, it doesn't
+draw graphs anymore; instead, it recommended Prometheus for this purpose.
+(This may have changed since then.)
 
 This docker-compose stack is a rough demo of setting up a simple Celery
 queue on a Django webapp, with some efforts to increase visibility:
