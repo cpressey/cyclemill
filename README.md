@@ -54,6 +54,10 @@ which can be super useful for troubleshooting, especially
 
     ./script/manage.py.sh shell
 
+And for running unit tests, with
+
+    ./script/manage.py.sh test
+
 Back on the host, you can run
 
     docker-compose build
@@ -69,15 +73,17 @@ TODO
 
 ### Task/workflow infrastructure
 
-*   make the workflow task pattern a pattern (decorator?)
-*   run a celery "canvas"
-*   Chain of tasks, use for workflow decoy
-*   Error handling, test thoroughly 
+*   Workflow task factory; return a chain of tasks where the first
+    creates a workflow, the middle ones (provided by caller) take
+    the workflow, and the final one updates the workflow to finished
+    state.
+*   Show that we can run a celery "canvas" in this pattern.
+*   Error handling should update workflow to "failed" state should
+    an error occur anywhere in the canvas.  Test this thoroughly.
 
 ### Django niceties
 
 *   base template
-*   unit tests (test the tasks using CELERY_EAGER)
 *   form to take length task should run
 
 ### Docker niceties
@@ -86,5 +92,6 @@ TODO
 
 ### Aspirational
 
+*   measure test coverage
 *   API endpoints for workflows
 *   react app to use API, display the workflow status

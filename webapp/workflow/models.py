@@ -19,7 +19,7 @@ class WorkflowTask(models.Model):
     is only ever associated with one Workflow.  (I just don't want to change the
     TaskResult model to put the ForeignKey in it.)
     """
-    workflow = models.ForeignKey(Workflow, on_delete=models.CASCADE)
+    workflow = models.ForeignKey(Workflow, on_delete=models.CASCADE, related_name='tasks')
     task_id = models.CharField(
         max_length=255,
         unique=True,
