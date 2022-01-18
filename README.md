@@ -30,8 +30,10 @@ TODO
 *   Chain of tasks, use for workflow decoy
 *   Error handling, test thoroughly 
 *   form to take length task should run
-*   config prometheus to consume celery-exporter
 *   monitor adapts exporter, config log level INFO not debug
 *   some unit tests, too, why not
+
+### Big
+
 *   API endpoints for workflows
 *   react app to use API, display the workflow status
