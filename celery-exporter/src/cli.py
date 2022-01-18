@@ -1,6 +1,9 @@
+import sys
+
 import click
 import pretty_errors  # pylint: disable=unused-import
 from prometheus_client import Histogram
+from loguru import logger
 
 from .exporter import Exporter
 from .help import cmd_help
@@ -29,6 +32,8 @@ default_buckets_str = ",".join(map(str, Histogram.DEFAULT_BUCKETS))
     help="Buckets for runtime histogram",
 )
 def cli(broker_url, port, buckets):  # pylint: disable=unused-argument
+    logger.remove()
+    logger.add(sys.stderr, level='INFO')
     formatted_buckets = list(map(float, buckets.split(",")))
     ctx = click.get_current_context()
     Exporter(formatted_buckets).run(ctx.params)
