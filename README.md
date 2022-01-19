@@ -63,19 +63,32 @@ which can be super useful for troubleshooting, especially
 
     ./script/manage.py.sh shell
 
-And for running unit tests, with
+Development
+-----------
 
-    ./script/manage.py.sh test
+The webapp and worker containers have bind mounts on the
+`webapp` directory.  So any time you edit files under
+`webapp`, those changes are seen immediately in the container.
 
-Back on the host, you can run
+But if you need to rebuild the images for other reasons,
+you can run
 
     docker-compose build
 
-to rebuild the images after making changes.  Also handy is
+after making changes.  Also handy is
 
     docker-compose restart worker
 
-(because it doesn't restart by itself when you change the code).
+because unlike Django, Celery doesn't automatically restart
+when you make changes to the source code files.
+
+To run unit tests, you can
+
+    ./script/manage.py.sh test
+
+To run unit tests and also generate a test coverage report,
+
+    ./script/coverage.sh
 
 TODO
 ----
@@ -92,6 +105,5 @@ TODO
 
 ### Aspirational
 
-*   measure test coverage
 *   API endpoints for workflows
 *   react app to use API, display the workflow status, refresh
