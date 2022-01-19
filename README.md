@@ -26,7 +26,7 @@ queue on a Django webapp, with some efforts to increase visibility:
     visible in Django's admin interface.
 
 (That last feature is possibly superfluous.  Task results are more of an
-implementation detail, the value of being able to view them in the admin
+implementation detail of Celery.  The value of being able to view them in the admin
 is debatable, and having them in Redis would be more efficient.)
 
 Usage
@@ -90,13 +90,8 @@ TODO
 *   Error handling should update workflow to "failed" state should
     an error occur anywhere in the canvas.  Test this thoroughly.
 
-### Django niceties
-
-*   base template
-*   form to take length task should run
-
 ### Aspirational
 
 *   measure test coverage
 *   API endpoints for workflows
-*   react app to use API, display the workflow status
+*   react app to use API, display the workflow status, refresh
