@@ -1,6 +1,11 @@
 cyclemill
 =========
 
+**IMPORTANT NOTE**: *This stack is not hardened.  You should not run it in production.*
+
+Overview
+--------
+
 Celery is a good task queue for Django (much better than rolling
 your own, am I right) but by default there's no visibilty into it.
 
@@ -9,16 +14,20 @@ that monitors celery tasks, but last I looked at it, it doesn't
 draw graphs anymore; instead, it recommended [Prometheus](https://prometheus.io/) for this purpose.
 (This may have changed since then.)
 
-This docker-compose stack is a rough demo of setting up a simple Celery
+**cyclemill** is a docker-compose stack that demonstrates setting up a simple Celery
 queue on a Django webapp, with some efforts to increase visibility:
 
-*   a Prometheus instance
+*   a Prometheus instance;
 *   an exporter to provide Celery metrics to Prometheus,
-    based on [danihodovic/celery-exporter](https://github.com/danihodovic/celery-exporter/).
+    based on [danihodovic/celery-exporter](https://github.com/danihodovic/celery-exporter/);
 *   a Django model (Workflow) that can be displayed to
-    show the progress of tasks in Django's views.
+    show the progress of tasks in Django's views; and
 *   [django-celery-results](https://django-celery-results.readthedocs.io/) so the results of the tasks are also
     visible in Django's admin interface.
+
+(That last feature is possibly superfluous.  Task results are more of an
+implementation detail, the value of being able to view them in the admin
+is debatable, and having them in Redis would be more efficient.)
 
 Usage
 -----
@@ -85,10 +94,6 @@ TODO
 
 *   base template
 *   form to take length task should run
-
-### Docker niceties
-
-*   don't run Django as root in the container
 
 ### Aspirational
 
