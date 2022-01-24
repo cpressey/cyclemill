@@ -1,6 +1,8 @@
 import logging
 from django.utils import timezone
 
+from webapp import celery_app
+
 from workflow.models import Workflow
 from workflow.tasks import sample_task
 
@@ -16,6 +18,15 @@ def start_workflow_canvas(signature):
     now = timezone.now()
     workflow = Workflow.objects.create(type='Basic', started_at=now)
     logger.info('[Workflow {}] is now {}'.format(workflow.id, workflow.status))
-    # TODO: signature.link(workflow_final_task.s())
-    signature.delay(workflow.id)
+    (signature | workflow_finalizer_task.s()).delay(workflow.id)
     return workflow
+
+
+@celery_app.task(bind=True)
+def workflow_finalizer_task(self, workflow_id):
+    now = timezone.now()
+    workflow = Workflow.objects.get(id=workflow_id)
+    workflow.status = 'COMPLETED'
+    workflow.save()
+    logger.info('[Workflow {}] is now {}'.format(workflow.id, workflow.status))
+    return workflow_id

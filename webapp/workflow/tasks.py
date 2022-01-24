@@ -18,7 +18,4 @@ def sample_task(self, workflow_id, arg):
     workflow_task = WorkflowTask.objects.create(workflow=workflow, task_id=self.request.id, started_at=now)
     logger.info('Starting [{}] for [Workflow {}]...'.format(workflow_task, workflow.id))
     sleep(arg)
-    workflow.status = 'COMPLETED'
-    workflow.save()
-    logger.info('[Workflow {}] is now {}'.format(workflow.id, workflow.status))
-    return arg
+    return workflow_id

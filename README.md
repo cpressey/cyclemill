@@ -105,8 +105,8 @@ TODO
     creates a workflow, the middle ones (provided by caller) take
     the workflow, and the final one updates the workflow to finished
     state.
-*   Have `start_workflow_canvas` add a "final" task in a chain to the
-    signature passed to it, that updates the workflow to COMPLETED.
+*   Have `start_workflow_canvas` add a "init" task in a chain to the
+    signature passed to it, that creates the initial WorkflowTask.
 *   Have a pattern so that all the intermediate task in the canvas
     pass on the workflow_id to the next task.
 *   Demo task that runs subtasks in a group.
