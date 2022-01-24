@@ -5,7 +5,8 @@ from django.views.decorators.http import require_POST
 
 from workflow.forms import LaunchTaskForm
 from workflow.models import Workflow, WorkflowTask
-from workflow.workflows import start_basic_workflow
+from workflow.tasks import sample_task
+from workflow.workflows import start_workflow_canvas
 
 
 def home(request):
@@ -22,7 +23,7 @@ def launch(request):
         duration = int(duration)
     except ValueError:
         return HttpResponseBadRequest()
-    workflow = start_basic_workflow(duration)
+    workflow = start_workflow_canvas(sample_task.s(duration))
     messages.info(request, '[Workflow {}] is now {} (duration: {} seconds).'.format(
         workflow.id, workflow.status, duration
     ))
