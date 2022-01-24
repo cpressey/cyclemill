@@ -90,6 +90,12 @@ To run unit tests and also generate a test coverage report,
 
     ./script/coverage.sh
 
+If you are short on resources you don't have to bring up
+every single one of the containers.  A slimmer, but still
+functional, set is
+
+    docker-compose up web worker db queue
+
 TODO
 ----
 
@@ -99,7 +105,13 @@ TODO
     creates a workflow, the middle ones (provided by caller) take
     the workflow, and the final one updates the workflow to finished
     state.
-*   Show that we can run a celery "canvas" in this pattern.
+*   Have `start_workflow_canvas` add a "final" task in a chain to the
+    signature passed to it, that updates the workflow to COMPLETED.
+*   Have a pattern so that all the intermediate task in the canvas
+    pass on the workflow_id to the next task.
+*   Demo task that runs subtasks in a group.
+*   Demo task that runs subtasks in a chord.
+*   Show the tasks of a workflow, in the UI, under each workflow.
 *   Error handling should update workflow to "failed" state should
     an error occur anywhere in the canvas.  Test this thoroughly.
 
