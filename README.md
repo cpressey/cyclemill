@@ -101,19 +101,14 @@ TODO
 
 ### Task/workflow infrastructure
 
-*   Workflow task factory; return a chain of tasks where the first
-    creates a workflow, the middle ones (provided by caller) take
-    the workflow, and the final one updates the workflow to finished
-    state.
-*   Have `start_workflow_canvas` add a "init" task in a chain to the
-    signature passed to it, that creates the initial WorkflowTask.
-*   Have a pattern so that all the intermediate task in the canvas
-    pass on the workflow_id to the next task.
+*   Establish a pattern (docs? decorator) that all the intermediate tasks
+    in the canvas pass on the workflow_id to the next task.
 *   Demo task that runs subtasks in a group.
 *   Demo task that runs subtasks in a chord.
 *   Show the tasks of a workflow, in the UI, under each workflow.
 *   Error handling should update workflow to "failed" state should
     an error occur anywhere in the canvas.  Test this thoroughly.
+*   Can on_error even have access to workflow_id?  Not sure.
 
 ### Aspirational
 
