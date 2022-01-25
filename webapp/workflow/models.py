@@ -27,4 +27,5 @@ class WorkflowTask(models.Model):
         help_text='Celery ID for the Task that was run'
     )
     started_at = models.DateTimeField()
+    finished_at = models.DateTimeField(null=True)
     task_result = models.ForeignKey('django_celery_results.TaskResult', null=True, on_delete=models.CASCADE)

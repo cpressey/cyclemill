@@ -24,6 +24,7 @@
               <li>
                 {{ workflow_task.task_id }}
                 {{ workflow_task.started_at }}
+                {{ workflow_task.finished_at|default:"running" }}
               </li>
             {% endfor %}
           </ul>

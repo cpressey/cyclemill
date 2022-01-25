@@ -32,7 +32,18 @@ def workflow_finalizer_task(self, workflow_id):
 
 def workflow_task(callable):
     """Decorator for making "workflow tasks", which are Celery tasks
-    that can be used with the Workflow/WorkflowTask system.
+    that can be used with the Workflow/WorkflowTask system.  They
+    take a `workflow_id` as the first argument and always return the
+    same `workflow_id`.  Using this decorator means your task doesn't
+    have to worry about that.
+
+    This decorator assumes you are passing `bind=True` in your call
+    to the `app.task` decorator, and thus your task is getting the
+    Celery task instance bound as the first argument.
+
+    For convenience, this decorate populates a `workflow_id` attribute
+    on that bound Celery task instance, that your task can access if
+    desired.
     """
 
     def wrapper(task, workflow_id, *args, **kwargs):
@@ -41,7 +52,7 @@ def workflow_task(callable):
         logger.info('Starting task for [Workflow {}]...'.format(workflow_id))
         task.workflow_id = workflow_id
         callable(task, *args, **kwargs)
-        workflow_task.completed_at = timezone.now()
+        workflow_task.finished_at = timezone.now()
         workflow_task.save()
         return workflow_id
     return wrapper
