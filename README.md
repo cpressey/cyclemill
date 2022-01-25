@@ -101,12 +101,13 @@ TODO
 
 ### Task/workflow infrastructure
 
-*   Demo task that runs subtasks in a chain.
 *   Demo task that runs subtasks in a group.
 *   Demo task that runs subtasks in a chord.
 *   Error handling should update workflow to "failed" state should
     an error occur anywhere in the canvas.  Test this thoroughly.
 *   Can on_error even have access to workflow_id?  Not sure.
+*   Ability to cancel a workflow?  Set a flag, workflow tasks
+    check this flag before doing their admin, raise exception.
 
 ### Aspirational
 

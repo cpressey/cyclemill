@@ -10,6 +10,14 @@ logger = logging.getLogger(__name__)
 
 @celery_app.task(bind=True)
 @workflow_task
-def sample_task(self, arg):
-    logger.info("This task will now sleep for {} seconds.".format(arg))
-    sleep(arg)
+def sleep_task(self, duration):
+    logger.info("This task will now sleep for {} seconds.".format(duration))
+    sleep(duration)
+
+
+def signature_simple(duration):
+    return sleep_task.s(duration)
+
+
+def signature_chain(duration):
+    return sleep_task.s(duration / 3) | sleep_task.s(duration / 3) | sleep_task.s(duration / 3)
