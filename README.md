@@ -104,7 +104,8 @@ TODO
 *   Demo task that runs subtasks in a chain.
 *   Demo task that runs subtasks in a group.
 *   Demo task that runs subtasks in a chord.
-*   Show the tasks of a workflow, in the UI, under each workflow.
+*   `completed_at` on WorkflowTask.
+*   Document decorator better.
 *   Error handling should update workflow to "failed" state should
     an error occur anywhere in the canvas.  Test this thoroughly.
 *   Can on_error even have access to workflow_id?  Not sure.

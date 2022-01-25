@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <h1>Workflow Manager</h1>
+  <h1>Workflow Viewer</h1>
 
   <form action="/launch/" method="POST">
     {% csrf_token %}
@@ -18,6 +18,16 @@
         {{ workflow.type }}
         {{ workflow.started_at }}
         {{ workflow.status }}
+        {% if workflow.tasks.exists %}
+          <ul>
+            {% for workflow_task in workflow.tasks.all %}
+              <li>
+                {{ workflow_task.task_id }}
+                {{ workflow_task.started_at }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>

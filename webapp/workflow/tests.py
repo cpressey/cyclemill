@@ -11,7 +11,7 @@ class WorkflowTests(TestCase):
             started_at=timezone.now(),
         )
         self.assertEqual(wf.status, 'RUNNING')
-        wft = WorkflowTask.objects.create(
+        WorkflowTask.objects.create(
             workflow=wf,
             task_id='12345',
             started_at=timezone.now(),
