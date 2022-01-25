@@ -3,7 +3,7 @@ import logging
 from django.utils import timezone
 
 from webapp import celery_app
-from workflow.models import Workflow
+from workflow.models import Workflow, WorkflowTask
 
 
 logger = logging.getLogger(__name__)
@@ -28,3 +28,20 @@ def workflow_finalizer_task(self, workflow_id):
     workflow.save()
     logger.info('[Workflow {}] is now {}'.format(workflow.id, workflow.status))
     return workflow_id
+
+
+def workflow_task(callable):
+    """Decorator for making "workflow tasks", which are Celery tasks
+    that can be used with the Workflow/WorkflowTask system.
+    """
+
+    def wrapper(task, workflow_id, *args, **kwargs):
+        now = timezone.now()
+        workflow_task = WorkflowTask.objects.create(workflow_id=workflow_id, task_id=task.request.id, started_at=now)
+        logger.info('Starting task for [Workflow {}]...'.format(workflow_id))
+        task.workflow_id = workflow_id
+        callable(task, *args, **kwargs)
+        workflow_task.completed_at = timezone.now()
+        workflow_task.save()
+        return workflow_id
+    return wrapper

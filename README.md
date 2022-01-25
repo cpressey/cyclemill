@@ -101,7 +101,7 @@ TODO
 
 ### Task/workflow infrastructure
 
-*   Decorator or something for the "workflow task" pattern.
+*   Demo task that runs subtasks in a chain.
 *   Demo task that runs subtasks in a group.
 *   Demo task that runs subtasks in a chord.
 *   Show the tasks of a workflow, in the UI, under each workflow.
