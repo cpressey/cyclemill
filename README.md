@@ -101,8 +101,7 @@ TODO
 
 ### Task/workflow infrastructure
 
-*   Establish a pattern (docs? decorator) that all the intermediate tasks
-    in the canvas pass on the workflow_id to the next task.
+*   Decorator or something for the "workflow task" pattern.
 *   Demo task that runs subtasks in a group.
 *   Demo task that runs subtasks in a chord.
 *   Show the tasks of a workflow, in the UI, under each workflow.
